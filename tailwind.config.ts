@@ -10,6 +10,10 @@ export default {
   theme: {
   	extend: {
   		colors: {
+			popover: {
+				DEFAULT: "hsl(var(--popover))",
+				foreground: "hsl(var(--popover-foreground))",
+			},
 			card: "hsl(var(--card))",
   			"color-01": "hsl(var(--01))",
   			"color-02": "hsl(var(--02))",
