@@ -11,25 +11,25 @@ export default {
   	extend: {
   		colors: {
 			card: "hsl(var(--card))",
-  			"01": "hsl(var(--01))",
-  			"02": "hsl(var(--02))",
-  			"03": "hsl(var(--03))",
-  			"04": "hsl(var(--04))",
-  			"05": "hsl(var(--05))",
-  			"06": {
+  			"color-01": "hsl(var(--01))",
+  			"color-02": "hsl(var(--02))",
+  			"color-03": "hsl(var(--03))",
+  			"color-04": "hsl(var(--04))",
+  			"color-05": "hsl(var(--05))",
+  			"color-06": {
 				DEFAULT: "hsl(var(--06))",
 				base: "hsl(var(--06-base))",
 				hover: "hsl(var(--06-hover))",
 			},
-  			"07": {
+  			"color-07": {
 				DEFAULT: "hsl(var(--07))",
 				base: "hsl(var(--07-base))",
 			},
-  			"08": "hsl(var(--08))",
-  			"09": "hsl(var(--09))",
-  			"10": "hsl(var(--10))",
-  			"11": "hsl(var(--11))",
-  			"12": "hsl(var(--12))",
+  			"color-08": "hsl(var(--08))",
+  			"color-09": "hsl(var(--09))",
+  			"color-10": "hsl(var(--10))",
+  			"color-11": "hsl(var(--11))",
+  			"color-12": "hsl(var(--12))",
   			border: "hsl(var(--border))",
   			background: "hsl(var(--background))",
   			foreground: "hsl(var(--foreground))",
