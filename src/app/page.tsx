@@ -2,12 +2,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Typography } from "@/components/ui/typography";
 import { PlusCircle } from "@phosphor-icons/react";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] bg-background items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-spartan">
+    <div className="grid  bg-background items-center justify-items-center size-full p-8 pb-20 gap-16 sm:p-20 font-spartan">
       <Card className="border-0 overflow-hidden">
         <CardContent className="flex items-center gap-3 p-4">
           <Button variant="primary" className="h-fit gap-4 p-2 pr-4" IconLeft={() => <PlusCircle height={24} width={24} weight="fill" className="text-white min-h-8 min-w-8" />}>Icon Button</Button>
@@ -62,8 +63,27 @@ export default function Home() {
 
       <Card className="border-0 overflow-hidden">
         <CardContent className="flex flex-col gap-3 p-4 max-w-2xl">
-          <div className="flex flex-col">
-            <Input />
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="input-1" variant="form-label">
+              Text - Default
+            </Label>
+            <Input id="input-1" />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="input-1" variant="form-label">
+              Text - Filled
+            </Label>
+            <Input id="input-1" defaultValue="Lorem Ipsum Dolor" />
+          </div>
+
+
+
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="input-1" variant="form-label">
+              Text - Active
+            </Label>
+            <Input id="input-1" defaultValue="Currently Typing" className="border-color-02" />
           </div>
 
         </CardContent>
