@@ -11,7 +11,7 @@ const labelVariants = cva(
   variants: {
     variant: {
       default: "",
-      "form-label": "!text-color-07 font-medium text-[15px]",
+      "form-label": "!text-color-07 font-medium text-[13px]",
     },
   },
 }

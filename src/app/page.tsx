@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectSeparator, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Typography } from "@/components/ui/typography";
 import { PlusCircle } from "@phosphor-icons/react";
+import { Fragment } from "react";
 
 export default function Home() {
   return (
@@ -62,28 +64,52 @@ export default function Home() {
       </Card>
 
       <Card className="border-0 overflow-hidden">
-        <CardContent className="flex flex-col gap-3 p-4 max-w-2xl">
-          <div className="flex flex-col gap-1.5">
-            <Label htmlFor="input-1" variant="form-label">
-              Text - Default
-            </Label>
-            <Input id="input-1" />
+        <CardContent className="flex flex-row gap-3 p-4 max-w-2xl">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="input-1" variant="form-label">
+                Text - Default
+              </Label>
+              <Input id="input-1" />
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="input-1" variant="form-label">
+                Text - Filled
+              </Label>
+              <Input id="input-1" defaultValue="Lorem Ipsum Dolor" />
+            </div>
+
+
+
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="input-1" variant="form-label">
+                Text - Active
+              </Label>
+              <Input id="input-1" defaultValue="Currently Typing" className="border-color-02" />
+            </div>
           </div>
 
-          <div className="flex flex-col gap-1.5">
-            <Label htmlFor="input-1" variant="form-label">
-              Text - Filled
-            </Label>
-            <Input id="input-1" defaultValue="Lorem Ipsum Dolor" />
-          </div>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="input-1" variant="form-label">
+                Payment Terms
+              </Label>
+              <Select>
+                <SelectTrigger defaultValue="net-1" className="w-[240px]">
+                  <SelectValue placeholder="Net 1 Day" />
+                </SelectTrigger>
+                <SelectContent style={{ width: 'var(--radix-select-trigger-width)' }}>
+                  {["Net 1 Day", "Net 7 Days", "Net 14 Days", "Net 30 Days"].map((item, index) => (
+                    <Fragment key={item}>
+                      {index > 0 ? <SelectSeparator /> : null}
+                      <SelectItem value={item}>{item}</SelectItem>
+                    </Fragment>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
-
-
-          <div className="flex flex-col gap-1.5">
-            <Label htmlFor="input-1" variant="form-label">
-              Text - Active
-            </Label>
-            <Input id="input-1" defaultValue="Currently Typing" className="border-color-02" />
           </div>
 
         </CardContent>

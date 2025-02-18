@@ -10,6 +10,8 @@ body {
   :root {
     --background: 231 27% 98%;
     --foreground: 228 29% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 231 28% 7%;
     --01: 252 94% 67%;
     --02: 252 100% 73%;
     --03: 233 31% 17%;
