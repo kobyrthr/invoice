@@ -72,3 +72,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.text-regular {
+  @apply text-[15px] font-bold tracking-[-0.25px] leading-[15px]
+}

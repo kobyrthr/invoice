@@ -2,6 +2,7 @@
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import InputCalendar from "@/components/ui/input-calendar";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectSeparator, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Typography } from "@/components/ui/typography";
@@ -96,10 +97,10 @@ export default function Home() {
                 Payment Terms
               </Label>
               <Select>
-                <SelectTrigger defaultValue="net-1" className="w-[240px]">
+                <SelectTrigger defaultValue="net-1" className="w-[240px]" >
                   <SelectValue placeholder="Net 1 Day" />
                 </SelectTrigger>
-                <SelectContent style={{ width: 'var(--radix-select-trigger-width)' }}>
+                <SelectContent style={{ width: 'var(--radix-select-trigger-width)' }} sideOffset={24}>
                   {["Net 1 Day", "Net 7 Days", "Net 14 Days", "Net 30 Days"].map((item, index) => (
                     <Fragment key={item}>
                       {index > 0 ? <SelectSeparator /> : null}
@@ -109,7 +110,10 @@ export default function Home() {
                 </SelectContent>
               </Select>
             </div>
+          </div>
 
+          <div className="flex flex-col gap-4">
+            <InputCalendar/>
           </div>
 
         </CardContent>
