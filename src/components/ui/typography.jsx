@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva} from "class-variance-authority"
 
 export const typography = cva("text-foreground", {
     variants: {
@@ -18,11 +18,6 @@ export const typography = cva("text-foreground", {
     },
 })
 
-export interface TypographyProps extends VariantProps<typeof typography> {
-    children: React.ReactNode
-    className?: string
-    asChild?: boolean
-}
 
 export const Typography = ({
     children,
@@ -30,7 +25,7 @@ export const Typography = ({
     className,
     asChild,
     ...props
-}: TypographyProps) => {
+}) => {
     const Comp = asChild ? Slot : "p"
     return (
         <Comp className={cn(typography({ type, className }))} {...props}>
