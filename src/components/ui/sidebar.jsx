@@ -21,7 +21,7 @@ import {
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const SIDEBAR_WIDTH = '103px';
-const SIDEBAR_WIDTH_MOBILE = '80ox';
+const SIDEBAR_WIDTH_MOBILE = '100vw';
 const SIDEBAR_WIDTH_ICON = '3rem';
 const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
 
@@ -121,7 +121,7 @@ const SidebarProvider = React.forwardRef(
               ...style,
             }}
             className={cn(
-              'group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar',
+              'group/sidebar-wrapper flex h-20 md:min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar',
               className
             )}
             ref={ref}
