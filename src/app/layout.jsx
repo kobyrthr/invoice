@@ -12,6 +12,9 @@ const leagueSpartan = League_Spartan({
 export const metadata = {
   title: 'Invoice',
   description: 'Invoice App',
+  icons: {
+    icon: '/logo.svg',
+  },
 };
 
 export default function RootLayout({ children }) {
