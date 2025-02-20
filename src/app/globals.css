@@ -8,6 +8,8 @@ body {
 
 @layer base {
   :root {
+    --success: 160 67% 52%;
+    --warning: 34 100% 50%;
     --background: 231 27% 98%;
     --foreground: 228 29% 7%;
     --popover: 0 0% 100%;

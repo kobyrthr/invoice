@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       <body className={`${leagueSpartan.className} antialiased`}>
         <SidebarProvider className=" flex-col md:flex-row font-spartan">
           <AppSidebar className="hidden md:block" />
-          <AppNavbar className="block md:hidden w-full" />
+          <AppNavbar className="block md:hidden" />
           <main className="block w-full">{children}</main>
         </SidebarProvider>
       </body>
