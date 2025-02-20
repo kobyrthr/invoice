@@ -1,5 +1,6 @@
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/ui/app-sidebar';
+import { AppNavbar } from '@/components/ui/app-navbar';
 import { League_Spartan } from 'next/font/google';
 import './globals.css';
 
@@ -17,12 +18,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${leagueSpartan.className} antialiased`}>
-        <SidebarProvider>
-          <AppSidebar />
-          <main>
-            <SidebarTrigger className="md:hidden rounded-l-none rounded-r-lg mt-8 size-12" />
-            {children}
-          </main>
+        <SidebarProvider className="w-full flex flex-col">
+          <div className="hidden md:block">
+            <AppSidebar />
+          </div>
+          <div className="block md:hidden">
+            <AppNavbar />
+          </div>
+          <main>{children}</main>
         </SidebarProvider>
       </body>
     </html>
