@@ -7,16 +7,16 @@ export function AppNavbar({ className = '' }) {
   return (
     <nav
       className={cn(
-        'bg-sidebar h-20 max-w-screen overflow-hidden rounded-none flex items-center justify-between',
-        className
+        className,
+        'bg-sidebar h-20 rounded-none flex items-center justify-between gap-3 '
       )}
     >
       <Image src={logo} alt="Invoice App Logo" width={80} height={80} />
 
-      <div className="flex flex-row w-fit">
+      <div className="flex flex-row">
         <Image
           src="/icon-moon.svg"
-          className="mx-auto mt-auto py-8 px-8 w-fit"
+          className="mt-auto py-8 px-8 w-fit"
           alt="Moon Icon"
           width={20}
           height={20}

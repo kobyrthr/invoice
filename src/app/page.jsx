@@ -1,7 +1,6 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import {
   Select,
   SelectContent,
@@ -14,6 +13,8 @@ import { SelectSeparator } from '@radix-ui/react-select';
 import { PlusCircle } from '@phosphor-icons/react';
 import { Fragment } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import InvoiceCard from '@/components/ui/invoice-card';
+import DATA from '@/../public/data.json';
 
 export default function Home() {
   const invoices = [1, 2, 3, 4];
@@ -21,9 +22,9 @@ export default function Home() {
   const isMobile = useIsMobile();
 
   return (
-    <div className=" grid bg-background items-center justify-items-center size-full p-8 pb-20 gap-16 sm:p-20">
-      <div className="size-full flex flex-col gap-8 min-[376px]:gap-14 md:gap-16 max-w-screen-md">
-        <div className="flex justify-between w-full">
+    <div className=" grid bg-background items-center justify-items-center size-full max-[368px]:p-6 p-12 max-[368px]:pb-10 pb-20 gap-16 lg:p-20">
+      <div className="size-full flex flex-col gap-8 min-[376px]:gap-14 lg:gap-16 max-w-screen-md">
+        <div className="flex justify-between w-full flex-wrap">
           <div className="">
             <Typography asChild type="heading-l">
               <h1>Invoices</h1>
@@ -35,7 +36,7 @@ export default function Home() {
             </Typography>
           </div>
 
-          <div className="flex gap-4 md:gap-20">
+          <div className="flex gap-4 lg:gap-20">
             <Select>
               <SelectTrigger
                 defaultValue="net-1"
@@ -75,13 +76,11 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <Card>
-          <CardContent>
-            <Typography asChild type="heading-l">
-              <h1>Invoices</h1>
-            </Typography>
-          </CardContent>
-        </Card>
+        <div className="flex flex-col gap-4">
+          {DATA.map((item) => (
+            <InvoiceCard key={item.id} invoice={item} />
+          ))}
+        </div>
       </div>
     </div>
   );
