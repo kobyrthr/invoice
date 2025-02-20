@@ -8,10 +8,13 @@ import {
 import Image from 'next/image';
 import logo from '@/../public/logo.svg';
 import ImageAvatar from '@/../public/image-avatar.jpg';
+import { cn } from '@/lib/utils';
 
-export function AppSidebar() {
+export function AppSidebar({ className = '' }) {
   return (
-    <Sidebar className="overflow-hidden !rounded-r-[20px] border-none">
+    <Sidebar
+      className={cn('overflow-hidden !rounded-r-[20px] border-none', className)}
+    >
       <SidebarHeader className="p-0">
         <Image src={logo} alt="Invoice App Logo" width={103} height={103} />
       </SidebarHeader>
