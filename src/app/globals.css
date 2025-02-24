@@ -95,3 +95,21 @@ body {
 .text-regular {
   @apply text-[15px] font-bold tracking-[-0.25px] leading-[15px];
 }
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -22,7 +22,7 @@ const InvoiceCard = ({ invoice = {} }) => {
 
   return (
     <Card onClick={handleClick}>
-      <CardContent className="grid max-sm:gap-6 sm:flex items-center size-full sm:justify-between">
+      <CardContent className="grid max-sm:gap-6 cursor-pointer sm:flex items-center size-full sm:justify-between">
         {isMobile ? (
           <>
             <div className="w-full flex items-center justify-between">
