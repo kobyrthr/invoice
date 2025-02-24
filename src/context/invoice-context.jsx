@@ -4,4 +4,6 @@ export const InvoiceContext = createContext({
   statuses: [],
   selectedStatus: null,
   setSelectedStatus: () => {},
+  invoice: null,
+  setSelectedStatus: () => {},
 });
