@@ -4,37 +4,40 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from '@/components/ui/select';
-import { useIsMobile } from '@/hooks/use-mobile';
+
 import { cn } from '@/lib/utils';
 import { Checkbox } from '@/components/ui/checkbox';
 import { InvoiceContext } from '@/context/invoice-context';
 
 const FilterStatus = () => {
-  const isMobile = useIsMobile();
-
-  const { statuses, selectedStatus, setSelectedStatus } =
+  const { statuses, selectedStatuses, setSelectedStatuses } =
     useContext(InvoiceContext);
 
-  console.log('debug - statuses, selectedStatus, setSelectedStatus ', {
-    statuses,
-    selectedStatus,
-    setSelectedStatus,
-  });
+  const handleStatusChange = (status) => {
+    if (selectedStatuses?.includes(status)) {
+      setSelectedStatuses(selectedStatuses?.filter((s) => s !== status));
+    } else {
+      console.log('debug - selectedStatuses', selectedStatuses);
+      setSelectedStatuses([...(selectedStatuses ?? []), status]);
+    }
+  };
+
+  const isStatusSelected = (item) => {
+    return selectedStatuses?.includes(item);
+  };
+
   return (
     <Select
-      onValueChange={(value) => {
-        setSelectedStatus(value);
+      onValueChange={(val) => {
+        handleStatusChange(val);
       }}
     >
       <SelectTrigger
         defaultValue="net-1"
         className="w-14 md:w-[118px] border-none bg-transparent p-0 normal-case"
       >
-        <SelectValue placeholder={isMobile ? 'Filter' : 'Filter by status'}>
-          {selectedStatus === null ? null : selectedStatus}
-        </SelectValue>
+        Filter by status
       </SelectTrigger>
       <SelectContent
         align="center"
@@ -54,7 +57,8 @@ const FilterStatus = () => {
             >
               <Checkbox
                 id={`checkbox-${item}`}
-                checked={selectedStatus === item}
+                checked={isStatusSelected(item)}
+                // onCheckedChange={() => handleStatusChange(item)}
               />
               <span className="!leading-[12px]">{item}</span>
             </label>

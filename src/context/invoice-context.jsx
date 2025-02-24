@@ -2,8 +2,7 @@ import { createContext } from 'react';
 
 export const InvoiceContext = createContext({
   statuses: [],
-  selectedStatus: null,
-  setSelectedStatus: () => {},
+  selectedStatuses: [],
   invoice: null,
-  setSelectedStatus: () => {},
+  setSelectedStatuses: () => {},
 });

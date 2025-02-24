@@ -6,8 +6,12 @@ import PageHeader from './page-header';
 import { InvoiceContext } from '@/context/invoice-context';
 
 export default function Home() {
-  const statuses = ['Pending', 'Paid', 'Draft'];
-  const [selectedStatus, setSelectedStatus] = useState(null);
+  const statuses = ['pending', 'paid', 'Draft'];
+  const [selectedStatuses, setSelectedStatuses] = useState(null);
+
+  const filteredData = selectedStatuses
+    ? DATA.filter((invoice) => selectedStatuses?.includes(invoice?.status))
+    : DATA;
 
   return (
     <div className=" grid bg-background items-center justify-items-center size-full max-[368px]:p-6 p-12 max-[368px]:pb-10 pb-20 gap-16 lg:p-20">
@@ -15,16 +19,20 @@ export default function Home() {
         <InvoiceContext.Provider
           value={{
             statuses,
-            selectedStatus,
-            setSelectedStatus,
+            selectedStatuses,
+            setSelectedStatuses,
           }}
         >
           <PageHeader />
 
           {/* Page Body */}
           <div className="flex flex-col gap-4">
-            {DATA.map((item) => (
-              <InvoiceCard key={item.id} invoice={item} />
+            {filteredData.map((item) => (
+              <InvoiceCard
+                selectedStatuses={selectedStatuses}
+                key={item.id}
+                invoice={item}
+              />
             ))}
           </div>
         </InvoiceContext.Provider>
