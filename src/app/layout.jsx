@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         <SidebarProvider className=" flex-col md:flex-row font-spartan">
           <AppSidebar className="hidden md:block" />
           <AppNavbar className="block md:hidden" />
-          <main className="block w-full">{children}</main>
+          <main className="block w-full bg-color-01 relative">{children}</main>
         </SidebarProvider>
       </body>
     </html>

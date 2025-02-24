@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Typography } from './typography';
 import { Badge } from './badge';
@@ -7,11 +8,20 @@ import Image from 'next/image';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const InvoiceCard = ({ invoice = {} }) => {
+  const router = useRouter();
   const { id, paymentDue, clientName, total, status } = invoice;
   const isMobile = useIsMobile('small');
 
+  const handleClick = () => {
+    localStorage.setItem('invoice', JSON.stringify(invoice));
+
+    setTimeout(() => {
+      router.push(`/${id}`);
+    }, 100);
+  };
+
   return (
-    <Card>
+    <Card onClick={handleClick}>
       <CardContent className="grid max-sm:gap-6 sm:flex items-center size-full sm:justify-between">
         {isMobile ? (
           <>
