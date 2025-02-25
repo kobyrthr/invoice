@@ -4,6 +4,7 @@ import { Typography } from '@/components/ui/typography';
 import { LoaderSkeleton } from '@/components/ui/loader-skeleton';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import InvoiceEdit from './invoice-edit';
 
 const InvoiceHeader = ({ invoice }) => {
   return (
@@ -30,12 +31,14 @@ const InvoiceHeader = ({ invoice }) => {
             className="inline-block w-20 h-10 rounded-full"
             isLoading={invoice === null}
           >
-            <Button
-              variant="default"
-              className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
-            >
-              Edit
-            </Button>
+            <InvoiceEdit invoice={invoice}>
+              <Button
+                variant="default"
+                className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
+              >
+                Edit
+              </Button>
+            </InvoiceEdit>
           </LoaderSkeleton>
 
           <LoaderSkeleton
