@@ -16,7 +16,9 @@ const InvoiceCard = ({ invoice = {} }) => {
     localStorage.setItem('invoice', JSON.stringify(invoice));
 
     setTimeout(() => {
-      router.push(`/${id}`);
+      router.push(`/${id}`, {
+        shallow: true,
+      });
     }, 100);
   };
 

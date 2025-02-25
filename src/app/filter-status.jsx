@@ -58,7 +58,6 @@ const FilterStatus = () => {
               <Checkbox
                 id={`checkbox-${item}`}
                 checked={isStatusSelected(item)}
-                // onCheckedChange={() => handleStatusChange(item)}
               />
               <span className="!leading-[12px]">{item}</span>
             </label>

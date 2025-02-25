@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import DATA from '@/../public/data.json';
 import Link from 'next/link';
 import Image from 'next/image';
-import InvoiceHeader from './invoice-header';
-import InvoiceBody from './invoice-body';
+import InvoiceHeader from './components/invoice-header';
+import InvoiceBody from './components/invoice-body';
 
 const InvoicePage = () => {
   const [invoice, setInvoice] = useState(null);
