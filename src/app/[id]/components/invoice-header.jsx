@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Typography } from '@/components/ui/typography';
 import { LoaderSkeleton } from '@/components/ui/loader-skeleton';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import InvoiceEdit from './invoice-edit';
+import { InvoiceContext } from '@/context/invoice-context';
+import InvoiceDelete from './invoice-delete';
 
 const InvoiceHeader = ({ invoice }) => {
+  const { deleteInvoice } = useContext(InvoiceContext);
+
   return (
     <Card>
       <CardContent className="w-full h-[88px] flex flex-row justify-between">
@@ -45,12 +49,19 @@ const InvoiceHeader = ({ invoice }) => {
             className="inline-block w-20 h-10 rounded-full"
             isLoading={invoice === null}
           >
-            <Button
-              variant="destructive"
-              className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
+            <InvoiceDelete
+              onDelete={() => {
+                deleteInvoice(invoice.id);
+              }}
+              invoiceId={invoice?.id}
             >
-              Delete
-            </Button>
+              <Button
+                variant="destructive"
+                className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
+              >
+                Delete
+              </Button>
+            </InvoiceDelete>
           </LoaderSkeleton>
 
           <LoaderSkeleton

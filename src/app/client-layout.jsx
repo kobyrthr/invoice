@@ -11,12 +11,15 @@ export default function ClientLayout({ children }) {
   const updateInvoice = (inv) => {
     const newInvoice = { ...invoice, ...inv };
 
-    console.log('debug - newInvoice', newInvoice);
-
     setInvoice(newInvoice);
     setInvoices(
       invoices.map((inv) => (inv.id === invoice.id ? newInvoice : inv))
     );
+  };
+
+  const deleteInvoice = (inv) => {
+    setInvoices(invoices.filter((inv) => inv.id !== invoice.id));
+    setInvoice(null);
   };
 
   return (
@@ -30,6 +33,7 @@ export default function ClientLayout({ children }) {
         selectedStatuses,
         setSelectedStatuses,
         updateInvoice,
+        deleteInvoice,
       }}
     >
       {children}

@@ -6,12 +6,13 @@ import Image from 'next/image';
 import InvoiceHeader from './components/invoice-header';
 import InvoiceBody from './components/invoice-body';
 import { InvoiceContext } from '@/context/invoice-context';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 const InvoicePage = () => {
   const { invoice, setInvoice, invoices } = useContext(InvoiceContext);
   const params = useParams();
   const id = params.id;
+  const router = useRouter();
 
   useEffect(() => {
     if (!invoice) {
@@ -19,6 +20,12 @@ const InvoicePage = () => {
       setInvoice(invoice);
     }
   }, []);
+
+  useEffect(() => {
+    if (!invoice) {
+      router.push('/');
+    }
+  }, [invoice]);
 
   return (
     <div className=" grid bg-background items-center justify-items-center size-full max-[368px]:p-6 p-12 !  pb-32 gap-16 lg:p-20">
