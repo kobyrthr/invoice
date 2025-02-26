@@ -15,12 +15,12 @@ export const formSchema = z.object({
   paymentDue: z.string().refine((date) => !isNaN(Date.parse(date)), {
     message: 'is invalid',
   }),
-  paymentTerms: z.string().min(1, 'is required'),
+  paymentTerms: z.coerce.number().int().min(1, 'is required'),
   description: z.string().min(1, 'is required'),
   items: z.array(
     z.object({
       name: z.string().min(1, 'is required'),
-      quantity: z.number().min(1, 'is required'),
+      quantity: z.number(),
       price: z.number().min(1, 'is required'),
     })
   ),

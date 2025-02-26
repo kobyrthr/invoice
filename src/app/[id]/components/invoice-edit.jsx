@@ -33,6 +33,7 @@ import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import InvoiceCalendar from './invoice-calendar';
 import { InvoiceItemsEdit } from './invoice-items-edit';
+import { Button } from '@/components/ui/button';
 
 const InvoiceEdit = ({ invoice, children }) => {
   const form = useForm({
@@ -44,7 +45,7 @@ const InvoiceEdit = ({ invoice, children }) => {
       clientEmail: invoice?.clientEmail ?? '',
       paymentDue: invoice?.paymentDue ?? '2021-08-19',
       description: invoice?.description ?? '',
-      paymentTerms: invoice?.paymentTerms ?? 'net-1',
+      paymentTerms: invoice?.paymentTerms ?? 1,
       senderAddress: invoice?.senderAddress ?? {
         street: '',
         city: '',
@@ -60,6 +61,17 @@ const InvoiceEdit = ({ invoice, children }) => {
       items: invoice?.items ?? [],
     },
   });
+
+  const onSubmit = (data) => {
+    console.log('Submitted Data:', data);
+    console.log('debug - error', form.control._fields);
+
+    // Check if any field has an error
+    const hasError = Object.values(form.formState.errors).some(
+      (error) => error !== undefined
+    );
+    console.log('Submit error:', form.formState.errors);
+  };
 
   return (
     <Sheet>
@@ -81,7 +93,7 @@ const InvoiceEdit = ({ invoice, children }) => {
           <div className="">
             <div className="flex flex-col gap-6 mt-10">
               <Form {...form}>
-                <form>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
                   {/* BILL FROM */}
                   <Typography
                     type="heading-s"
@@ -459,7 +471,7 @@ const InvoiceEdit = ({ invoice, children }) => {
 
                             <FormControl>
                               <Select onValueChange={field.onChange}>
-                                <SelectTrigger defaultValue="net-1">
+                                <SelectTrigger defaultValue={field.value}>
                                   <SelectValue placeholder="Net 1 Day" />
                                 </SelectTrigger>
                                 <SelectContent
@@ -468,16 +480,11 @@ const InvoiceEdit = ({ invoice, children }) => {
                                   }}
                                   sideOffset={24}
                                 >
-                                  {[
-                                    'Net 1 Day',
-                                    'Net 7 Days',
-                                    'Net 14 Days',
-                                    'Net 30 Days',
-                                  ].map((item, index) => (
+                                  {['1', '7', '14', '30'].map((item, index) => (
                                     <Fragment key={item}>
                                       {index > 0 ? <SelectSeparator /> : null}
                                       <SelectItem value={item}>
-                                        {item}
+                                        Net {item} Day{item === 1 ? '' : 's'}
                                       </SelectItem>
                                     </Fragment>
                                   ))}
@@ -525,6 +532,30 @@ const InvoiceEdit = ({ invoice, children }) => {
                     control={form.control}
                     items={invoice?.items}
                   />
+                  <div className="h-10"></div>
+
+                  <div className="absolute inset-0 top-auto right-2 flex justify-end bg-popover">
+                    <Button variant="default" className="w-fit h-12 mt-4">
+                      <Typography
+                        type="heading-s-variant"
+                        className="text-color-06"
+                      >
+                        Cancel
+                      </Typography>
+                    </Button>
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      className="w-fit h-12 mt-4 ml-6"
+                    >
+                      <Typography
+                        type="heading-s-variant"
+                        className="text-inherit"
+                      >
+                        Save Changes
+                      </Typography>
+                    </Button>
+                  </div>
                 </form>
               </Form>
             </div>
