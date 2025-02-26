@@ -110,7 +110,7 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
                       onClick={() => {
                         remove(index);
                       }}
-                      variant="ghost"
+                      variant="default"
                       className="px-0 py-0"
                     >
                       <Image src={DeleteIcon} alt="Delete" />
