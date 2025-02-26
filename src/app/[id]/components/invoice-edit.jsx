@@ -1,5 +1,5 @@
 'use client';
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext, useRef } from 'react';
 import {
   Sheet,
   SheetContent,
@@ -34,13 +34,17 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import InvoiceCalendar from './invoice-calendar';
 import { InvoiceItemsEdit } from './invoice-items-edit';
 import { Button } from '@/components/ui/button';
+import { InvoiceContext } from '@/context/invoice-context';
 
 const InvoiceEdit = ({ invoice, children }) => {
+  const { updateInvoice } = useContext(InvoiceContext);
+  const sheetTriggerRef = useRef();
   const form = useForm({
     resolver: zodResolver(formSchema),
     mode: 'all',
 
     defaultValues: {
+      id: invoice?.id,
       clientName: invoice?.clientName ?? '',
       clientEmail: invoice?.clientEmail ?? '',
       paymentDue: invoice?.paymentDue ?? '2021-08-19',
@@ -59,27 +63,32 @@ const InvoiceEdit = ({ invoice, children }) => {
         country: '',
       },
       items: invoice?.items ?? [],
+      total: invoice?.total ?? 1.0,
     },
   });
 
   const onSubmit = (data) => {
     console.log('Submitted Data:', data);
-    console.log('debug - error', form.control._fields);
+    updateInvoice(data);
+    setTimeout(() => {
+      sheetTriggerRef.current.click();
+    }, 500);
+  };
 
-    // Check if any field has an error
-    const hasError = Object.values(form.formState.errors).some(
-      (error) => error !== undefined
-    );
-    console.log('Submit error:', form.formState.errors);
+  const handleCancel = () => {
+    form.reset();
+    sheetTriggerRef.current.click();
   };
 
   return (
     <Sheet>
-      <SheetTrigger asChild>{children}</SheetTrigger>
+      <SheetTrigger ref={sheetTriggerRef} asChild>
+        {children}
+      </SheetTrigger>
       <SheetContent
         hideCloseButton={true}
         side="left"
-        className="w-full !max-w-[616px] p-14 bg-popover"
+        className="w-full !max-w-[616px] p-14 pb-8 bg-popover"
       >
         <ScrollArea className="h-full max-w-[616px] pr-2">
           <SheetHeader>
@@ -532,10 +541,14 @@ const InvoiceEdit = ({ invoice, children }) => {
                     control={form.control}
                     items={invoice?.items}
                   />
-                  <div className="h-10"></div>
+                  <div className="h-16"></div>
 
-                  <div className="absolute inset-0 top-auto right-2 flex justify-end bg-popover">
-                    <Button variant="default" className="w-fit h-12 mt-4">
+                  <div className="h-[110px]  absolute inset-0 px-14 pr-16 -left-14 -right-14 -bottom-8 top-auto flex justify-end items-center gap-2 bg-popover">
+                    <Button
+                      onClick={handleCancel}
+                      variant="default"
+                      className="w-[96px] h-12"
+                    >
                       <Typography
                         type="heading-s-variant"
                         className="text-color-06"
@@ -546,7 +559,7 @@ const InvoiceEdit = ({ invoice, children }) => {
                     <Button
                       type="submit"
                       variant="primary"
-                      className="w-fit h-12 mt-4 ml-6"
+                      className="w-fit h-12"
                     >
                       <Typography
                         type="heading-s-variant"

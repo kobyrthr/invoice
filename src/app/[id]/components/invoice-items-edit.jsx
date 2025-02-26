@@ -13,13 +13,21 @@ import { Typography } from '@/components/ui/typography';
 import React from 'react';
 import DeleteIcon from '@/../public/icon-delete.svg';
 import Image from 'next/image';
-import { useFieldArray } from 'react-hook-form';
+import { useFieldArray, useWatch } from 'react-hook-form';
 
 export const InvoiceItemsEdit = ({ watch, register, control }) => {
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'items',
   });
+
+  const watchedItems = useWatch({ control, name: 'items' });
+
+  // Calculate total dynamically
+  const calculatedItems = watchedItems.map((item) => ({
+    ...item,
+    total: item.price * item.quantity || 0,
+  }));
 
   return (
     <div className="py-6">
@@ -58,10 +66,6 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
           </TableHeader>
           <TableBody>
             {fields?.map((item, index) => {
-              const quantity = watch(`items[${index}].quantity`) || 0;
-              const price = watch(`items[${index}].price`) || 0;
-
-              const total = price * quantity;
               return (
                 <TableRow key={item.id} className="!border-t-0 !border-b-0">
                   <TableCell className="pl-0">
@@ -87,6 +91,7 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
                       type="number"
                       className="w-full py-4"
                       defaultValue={item?.price}
+                      step="any"
                       {...register(`items[${index}].price`, {
                         valueAsNumber: true,
                       })}
@@ -97,7 +102,7 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
                       type="heading-s"
                       className="text-color-06 max-w-16 truncate"
                     >
-                      {total.toFixed(2)}
+                      {calculatedItems[index]?.total.toFixed(2)}
                     </Typography>
                   </TableCell>
                   <TableCell className="p-0 w-6 text-center">
@@ -121,7 +126,7 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
                 <Button
                   onClick={(e) => {
                     e.preventDefault();
-                    append({ name: '', quantity: 1, price: 0 });
+                    append({ name: 'Example', quantity: 1, price: 1 });
                   }}
                   variant="default"
                   className="w-full h-12 mt-4"
