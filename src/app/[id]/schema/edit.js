@@ -17,4 +17,11 @@ export const formSchema = z.object({
   }),
   paymentTerms: z.string().min(1, 'is required'),
   description: z.string().min(1, 'is required'),
+  items: z.array(
+    z.object({
+      name: z.string().min(1, 'is required'),
+      quantity: z.number().min(1, 'is required'),
+      price: z.number().min(1, 'is required'),
+    })
+  ),
 });
