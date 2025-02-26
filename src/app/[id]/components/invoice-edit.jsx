@@ -32,6 +32,7 @@ import { formSchema } from '../schema/edit';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import InvoiceCalendar from './invoice-calendar';
+import { InvoiceItemsEdit } from './invoice-items-edit';
 
 const InvoiceEdit = ({ invoice, children }) => {
   const form = useForm({
@@ -56,6 +57,7 @@ const InvoiceEdit = ({ invoice, children }) => {
         postCode: '',
         country: '',
       },
+      items: invoice?.items ?? [],
     },
   });
 
@@ -65,7 +67,7 @@ const InvoiceEdit = ({ invoice, children }) => {
       <SheetContent
         hideCloseButton={true}
         side="left"
-        className="w-full !max-w-[616px] p-14"
+        className="w-full !max-w-[616px] p-14 bg-popover"
       >
         <ScrollArea className="h-full max-w-[616px] pr-2">
           <SheetHeader>
@@ -87,7 +89,6 @@ const InvoiceEdit = ({ invoice, children }) => {
                   >
                     Bill From
                   </Typography>
-
                   <FormField
                     control={form.control}
                     name="senderAddress.street"
@@ -210,16 +211,13 @@ const InvoiceEdit = ({ invoice, children }) => {
                       )}
                     />
                   </div>
-
                   {/* BILL TO */}
-
                   <Typography
                     type="heading-s"
                     className="text-color-01 font-bold mb-6 mt-10"
                   >
                     Bill To
                   </Typography>
-
                   <div className="space-y-6">
                     <FormField
                       control={form.control}
@@ -313,7 +311,6 @@ const InvoiceEdit = ({ invoice, children }) => {
                       )}
                     />
                   </div>
-
                   <div className="grid grid-cols-2 min-[458px]:grid-cols-3 gap-6 mt-6">
                     <FormField
                       control={form.control}
@@ -406,7 +403,6 @@ const InvoiceEdit = ({ invoice, children }) => {
                       )}
                     />
                   </div>
-
                   {/* Invoice */}
                   <div className="space-y-6 mt-10">
                     <div className="grid grid-cols-2 gap-6">
@@ -523,6 +519,12 @@ const InvoiceEdit = ({ invoice, children }) => {
                       )}
                     />
                   </div>
+                  <InvoiceItemsEdit
+                    watch={form.watch}
+                    register={form.register}
+                    control={form.control}
+                    items={invoice?.items}
+                  />
                 </form>
               </Form>
             </div>
