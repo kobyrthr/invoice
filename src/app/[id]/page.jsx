@@ -1,23 +1,23 @@
 'use client';
 import { Typography } from '@/components/ui/typography';
-import { useState, useEffect } from 'react';
-import DATA from '@/../public/data.json';
+import { useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import InvoiceHeader from './components/invoice-header';
 import InvoiceBody from './components/invoice-body';
+import { InvoiceContext } from '@/context/invoice-context';
+import { useParams } from 'next/navigation';
 
 const InvoicePage = () => {
-  const [invoice, setInvoice] = useState(null);
+  const { invoice, setInvoice, invoices } = useContext(InvoiceContext);
+  const params = useParams();
+  const id = params.id;
 
   useEffect(() => {
-    setTimeout(() => {
-      const storedInvoice = JSON.parse(localStorage.getItem('invoice'));
-      if (storedInvoice) {
-        const invoice = DATA.find((item) => item.id === storedInvoice.id);
-        setInvoice(invoice);
-      }
-    }, 500);
+    if (!invoice) {
+      const invoice = invoices.find((item) => item.id === id);
+      setInvoice(invoice);
+    }
   }, []);
 
   return (

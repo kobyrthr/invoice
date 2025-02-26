@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Typography } from './typography';
@@ -6,15 +6,16 @@ import { Badge } from './badge';
 import IconArrowRight from '@/../public/icon-arrow-right.svg';
 import Image from 'next/image';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { InvoiceContext } from '@/context/invoice-context';
 
-const InvoiceCard = ({ invoice = {} }) => {
+const InvoiceCard = ({ invoice }) => {
   const router = useRouter();
+  const { setInvoice } = useContext(InvoiceContext);
   const { id, paymentDue, clientName, total, status } = invoice;
   const isMobile = useIsMobile('small');
 
   const handleClick = () => {
-    localStorage.setItem('invoice', JSON.stringify(invoice));
-
+    setInvoice(invoice);
     setTimeout(() => {
       router.push(`/${id}`, {
         shallow: true,

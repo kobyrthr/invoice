@@ -7,21 +7,31 @@ const addressSchema = z.object({
   country: z.string().min(1, 'is required'),
 });
 
-export const formSchema = z.object({
-  clientName: z.string().min(1, 'is required'),
-  clientEmail: z.string().email('is invalid'),
-  senderAddress: addressSchema,
-  clientAddress: addressSchema,
-  paymentDue: z.string().refine((date) => !isNaN(Date.parse(date)), {
-    message: 'is invalid',
-  }),
-  paymentTerms: z.coerce.number().int().min(1, 'is required'),
-  description: z.string().min(1, 'is required'),
-  items: z.array(
-    z.object({
-      name: z.string().min(1, 'is required'),
-      quantity: z.number(),
-      price: z.number().min(1, 'is required'),
-    })
-  ),
-});
+export const formSchema = z
+  .object({
+    id: z.string(),
+    clientName: z.string().min(1, 'is required'),
+    clientEmail: z.string().email('is invalid'),
+    senderAddress: addressSchema,
+    clientAddress: addressSchema,
+    paymentDue: z.string().refine((date) => !isNaN(Date.parse(date)), {
+      message: 'is invalid',
+    }),
+    paymentTerms: z.coerce.number().int().min(1, 'is required'),
+    description: z.string().min(1, 'is required'),
+    items: z.array(
+      z
+        .object({
+          name: z.string().min(1, 'is required'),
+          quantity: z.number(),
+          price: z.number().min(1, 'is required'),
+          total: z.number(),
+        })
+        .transform((data) => ({ ...data, total: data.price * data.quantity }))
+    ),
+    total: z.number(),
+  })
+  .transform((data) => ({
+    ...data,
+    total: data.items.reduce((acc, item) => acc + item.total, 0),
+  }));
