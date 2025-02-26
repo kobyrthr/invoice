@@ -58,34 +58,38 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
           </TableHeader>
           <TableBody>
             {fields?.map((item, index) => {
-              const quantity = watch(`items.${index}.quantity`) || 0;
-              const price = watch(`items.${index}.price`) || 0;
+              const quantity = watch(`items[${index}].quantity`) || 0;
+              const price = watch(`items[${index}].price`) || 0;
 
               const total = price * quantity;
               return (
                 <TableRow key={item.id} className="!border-t-0 !border-b-0">
                   <TableCell className="pl-0">
                     <Input
-                      {...register(`items.${index}.name`)}
                       type="text"
                       className="w-full py-4"
                       defaultValue={item?.name}
+                      {...register(`items[${index}].name`)}
                     />
                   </TableCell>
                   <TableCell>
                     <Input
-                      {...register(`items.${index}.quantity`)}
                       type="number"
                       className="w-12 text-center px-3 py-4"
                       defaultValue={item?.quantity}
+                      {...register(`items[${index}].quantity`, {
+                        valueAsNumber: true,
+                      })}
                     />
                   </TableCell>
                   <TableCell className="w-28">
                     <Input
-                      {...register(`items.${index}.price`)}
                       type="number"
                       className="w-full py-4"
                       defaultValue={item?.price}
+                      {...register(`items[${index}].price`, {
+                        valueAsNumber: true,
+                      })}
                     />
                   </TableCell>
                   <TableCell className="w-20 ">
