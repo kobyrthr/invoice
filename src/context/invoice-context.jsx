@@ -13,4 +13,5 @@ export const InvoiceContext = createContext({
   updateInvoice: (invoice) => {},
   addInvoice: (invoice) => {},
   deleteInvoice: (invoice) => {},
+  markAsPaid: (invoice) => {},
 });

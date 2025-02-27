@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/table';
 
 const InvoiceCalculator = ({ invoice }) => {
-  console.log('debug - invoice.items', invoice?.total);
   return (
     <div className="flex flex-col bg-color-07-base mt-12">
       <Table containerClassName="hidden sm:block">
