@@ -9,7 +9,7 @@ const addressSchema = z.object({
 
 export const formSchema = z
   .object({
-    id: z.string(),
+    id: z.string().optional(),
     clientName: z.string().min(1, 'is required'),
     clientEmail: z.string().email('is invalid'),
     senderAddress: addressSchema,
@@ -25,11 +25,12 @@ export const formSchema = z
           name: z.string().min(1, 'is required'),
           quantity: z.number(),
           price: z.number().min(1, 'is required'),
-          total: z.number(),
+          total: z.coerce.number().optional(),
         })
         .transform((data) => ({ ...data, total: data.price * data.quantity }))
     ),
-    total: z.number(),
+    total: z.coerce.number(),
+    status: z.string(),
   })
   .transform((data) => ({
     ...data,

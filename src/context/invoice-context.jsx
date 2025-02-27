@@ -11,5 +11,6 @@ export const InvoiceContext = createContext({
   invoice: null,
   setSelectedStatuses: () => {},
   updateInvoice: (invoice) => {},
+  addInvoice: (invoice) => {},
   deleteInvoice: (invoice) => {},
 });

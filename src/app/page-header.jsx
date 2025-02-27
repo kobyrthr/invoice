@@ -5,6 +5,7 @@ import { PlusCircle } from '@phosphor-icons/react';
 import { Typography } from '@/components/ui/typography';
 import DATA from '@/../public/data.json';
 import { useIsMobile } from '@/hooks/use-mobile';
+import InvoiceCreate from './[id]/components/invoice-create';
 
 const PageHeader = () => {
   const isMobile = useIsMobile();
@@ -24,20 +25,22 @@ const PageHeader = () => {
 
       <div className="flex gap-4 lg:gap-20">
         <FilterStatus />
-        <Button
-          variant="primary"
-          className="h-fit gap-4 p-2 pr-4"
-          IconLeft={() => (
-            <PlusCircle
-              height={24}
-              width={24}
-              weight="fill"
-              className="text-white min-h-8 min-w-8"
-            />
-          )}
-        >
-          <span className="pt-0.5">{isMobile ? 'New' : 'New Invoice'}</span>
-        </Button>
+        <InvoiceCreate>
+          <Button
+            variant="primary"
+            className="h-fit gap-4 p-2 pr-4"
+            IconLeft={() => (
+              <PlusCircle
+                height={24}
+                width={24}
+                weight="fill"
+                className="text-white min-h-8 min-w-8"
+              />
+            )}
+          >
+            <span className="pt-0.5">{isMobile ? 'New' : 'New Invoice'}</span>
+          </Button>
+        </InvoiceCreate>
       </div>
     </div>
   );
