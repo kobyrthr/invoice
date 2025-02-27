@@ -3,6 +3,8 @@ import InvoiceCard from '@/components/ui/invoice-card';
 import PageHeader from './page-header';
 import { useContext } from 'react';
 import { InvoiceContext } from '@/context/invoice-context';
+import EmptyList from './empty-list';
+import { cn } from '@/lib/utils';
 
 export default function Home() {
   const { invoices, selectedStatuses } = useContext(InvoiceContext);
@@ -15,14 +17,22 @@ export default function Home() {
         <PageHeader />
 
         {/* Page Body */}
-        <div className="flex flex-col gap-4">
-          {filteredData.map((item) => (
-            <InvoiceCard
-              selectedStatuses={selectedStatuses}
-              key={item.id}
-              invoice={item}
-            />
-          ))}
+        <div
+          className={cn('size-full flex flex-col gap-4', {
+            'justify-center': !filteredData.length,
+          })}
+        >
+          {filteredData.length ? (
+            filteredData.map((item) => (
+              <InvoiceCard
+                selectedStatuses={selectedStatuses}
+                key={item.id}
+                invoice={item}
+              />
+            ))
+          ) : (
+            <EmptyList />
+          )}
         </div>
       </div>
     </div>

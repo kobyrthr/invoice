@@ -4,8 +4,12 @@ import { InvoiceContext } from '@/context/invoice-context';
 import DATA from '@/../public/data.json';
 
 export default function ClientLayout({ children }) {
-  const statuses = ['pending', 'paid', 'Draft'];
-  const [selectedStatuses, setSelectedStatuses] = useState(null);
+  const statuses = ['pending', 'paid', 'draft'];
+  const [selectedStatuses, setSelectedStatuses] = useState(
+    'pending',
+    'paid',
+    'draft'
+  );
   const [invoice, setInvoice] = useState(null);
   const [invoices, setInvoices] = useState(DATA);
   const addInvoice = (inv) => {
