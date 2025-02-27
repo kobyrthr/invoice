@@ -18,7 +18,6 @@ const FilterStatus = () => {
     if (selectedStatuses?.includes(status)) {
       setSelectedStatuses(selectedStatuses?.filter((s) => s !== status));
     } else {
-      console.log('debug - selectedStatuses', selectedStatuses);
       setSelectedStatuses([...(selectedStatuses ?? []), status]);
     }
   };

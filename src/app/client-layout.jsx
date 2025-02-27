@@ -31,6 +31,15 @@ export default function ClientLayout({ children }) {
     };
     setInvoices((invoices) => [newInvoice, ...invoices]);
   };
+
+  const markAsPaid = (inv) => {
+    const paidInvoice = { ...invoice, status: 'paid' };
+    setInvoice(paidInvoice);
+    setInvoices(
+      invoices.map((inv) => (inv.id === invoice.id ? paidInvoice : inv))
+    );
+  };
+
   const updateInvoice = (inv) => {
     const newInvoice = { ...invoice, ...inv };
 
@@ -58,6 +67,7 @@ export default function ClientLayout({ children }) {
         addInvoice,
         updateInvoice,
         deleteInvoice,
+        markAsPaid,
       }}
     >
       {children}

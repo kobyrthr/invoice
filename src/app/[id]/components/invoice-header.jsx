@@ -9,7 +9,7 @@ import { InvoiceContext } from '@/context/invoice-context';
 import InvoiceDelete from './invoice-delete';
 
 const InvoiceHeader = ({ invoice }) => {
-  const { deleteInvoice } = useContext(InvoiceContext);
+  const { deleteInvoice, markAsPaid } = useContext(InvoiceContext);
 
   return (
     <Card>
@@ -70,7 +70,11 @@ const InvoiceHeader = ({ invoice }) => {
           >
             <Button
               variant="primary"
+              disabled={invoice?.status === 'paid'}
               className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
+              onClick={() => {
+                markAsPaid(invoice);
+              }}
             >
               Mark as Paid
             </Button>
