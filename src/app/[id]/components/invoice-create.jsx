@@ -36,8 +36,8 @@ import { InvoiceItemsEdit } from './invoice-items-edit';
 import { Button } from '@/components/ui/button';
 import { InvoiceContext } from '@/context/invoice-context';
 
-const InvoiceEdit = ({ invoice, children }) => {
-  const { updateInvoice } = useContext(InvoiceContext);
+const InvoiceCreate = ({ invoice, children }) => {
+  const { addInvoice } = useContext(InvoiceContext);
   const sheetTriggerRef = useRef();
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -64,26 +64,34 @@ const InvoiceEdit = ({ invoice, children }) => {
       },
       items: invoice?.items ?? [],
       total: invoice?.total ?? 1.0,
-      status: 'Pending',
+      status: invoice?.status ?? 'pending',
     },
   });
 
+  const handleDraft = () => {
+    const currentData = form.getValues();
+    const draftData = {
+      ...currentData,
+      status: 'draft',
+    };
+    addInvoice(draftData);
+    form.reset();
+  };
+
   const onSubmit = (data) => {
     console.log('Submitted Data:', data);
-    updateInvoice(data);
+    addInvoice(data);
+    form.reset();
     setTimeout(() => {
       sheetTriggerRef.current.click();
     }, 500);
-  };
-
-  const onError = (data) => {
-    console.log('Submitted error:', data);
   };
 
   const handleCancel = () => {
     form.reset();
     sheetTriggerRef.current.click();
   };
+  const onError = (errors) => console.log('Errors:', errors);
 
   return (
     <Sheet>
@@ -552,25 +560,38 @@ const InvoiceEdit = ({ invoice, children }) => {
                     <Button
                       onClick={handleCancel}
                       variant="default"
-                      className="w-[96px] h-12"
+                      className="h-auto py-4 px-6 mr-auto"
                     >
                       <Typography
                         type="heading-s-variant"
                         className="text-color-06"
                       >
-                        Cancel
+                        Discard
                       </Typography>
                     </Button>
                     <Button
-                      type="submit"
-                      variant="primary"
-                      className="w-fit h-12"
+                      type
+                      variant="secondary"
+                      className="w-fit h-auto  py-4 px-6"
+                      onClick={handleDraft}
                     >
                       <Typography
                         type="heading-s-variant"
                         className="text-inherit"
                       >
-                        Save Changes
+                        Save as Draft
+                      </Typography>
+                    </Button>
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      className="w-fit h-auto py-4 px-6"
+                    >
+                      <Typography
+                        type="heading-s-variant"
+                        className="text-inherit"
+                      >
+                        Save & Send
                       </Typography>
                     </Button>
                   </div>
@@ -584,4 +605,4 @@ const InvoiceEdit = ({ invoice, children }) => {
   );
 };
 
-export default InvoiceEdit;
+export default InvoiceCreate;

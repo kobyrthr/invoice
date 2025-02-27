@@ -41,8 +41,8 @@ const InvoiceCalculator = ({ invoice }) => {
         </TableHeader>
         <TableBody className="">
           {invoice?.items
-            ? invoice?.items.map((item) => (
-                <TableRow key={item.name} className="border-b-0">
+            ? invoice?.items.map((item, index) => (
+                <TableRow key={item.name + index} className="border-b-0">
                   <TableCell className="font-medium w-[45%]">
                     <Typography type="heading-s" className="">
                       {item?.name}
