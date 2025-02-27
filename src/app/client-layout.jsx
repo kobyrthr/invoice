@@ -5,11 +5,11 @@ import DATA from '@/../public/data.json';
 
 export default function ClientLayout({ children }) {
   const statuses = ['pending', 'paid', 'draft'];
-  const [selectedStatuses, setSelectedStatuses] = useState(
+  const [selectedStatuses, setSelectedStatuses] = useState([
     'pending',
     'paid',
-    'draft'
-  );
+    'draft',
+  ]);
   const [invoice, setInvoice] = useState(null);
   const [invoices, setInvoices] = useState(DATA);
   const addInvoice = (inv) => {
