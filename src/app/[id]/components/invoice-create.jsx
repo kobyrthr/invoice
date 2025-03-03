@@ -99,7 +99,7 @@ const InvoiceCreate = ({ invoice, children }) => {
         {children}
       </SheetTrigger>
       <SheetContent
-        hideCloseButton={true}
+        hideCloseButton={false}
         side="left"
         className="w-full !max-w-[616px] p-14 pb-8 bg-popover"
       >

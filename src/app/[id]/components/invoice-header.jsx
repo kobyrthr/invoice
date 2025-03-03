@@ -86,24 +86,33 @@ const InvoiceHeader = ({ invoice }) => {
             className="inline-block w-20 h-10 rounded-full"
             isLoading={invoice === null}
           >
-            <Button
-              variant="default"
-              className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
-            >
-              Edit
-            </Button>
+            <InvoiceEdit invoice={invoice}>
+              <Button
+                variant="default"
+                className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
+              >
+                Edit
+              </Button>
+            </InvoiceEdit>
           </LoaderSkeleton>
 
           <LoaderSkeleton
             className="inline-block w-20 h-10 rounded-full"
             isLoading={invoice === null}
           >
-            <Button
-              variant="destructive"
-              className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
+            <InvoiceDelete
+              onDelete={() => {
+                deleteInvoice(invoice.id);
+              }}
+              invoiceId={invoice?.id}
             >
-              Delete
-            </Button>
+              <Button
+                variant="destructive"
+                className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
+              >
+                Delete
+              </Button>
+            </InvoiceDelete>
           </LoaderSkeleton>
 
           <LoaderSkeleton
@@ -112,7 +121,11 @@ const InvoiceHeader = ({ invoice }) => {
           >
             <Button
               variant="primary"
+              disabled={invoice?.status === 'paid'}
               className="min-h-fit leading-6 px-3 md:px-6 py-2 md:py-4"
+              onClick={() => {
+                markAsPaid(invoice);
+              }}
             >
               Mark as Paid
             </Button>
