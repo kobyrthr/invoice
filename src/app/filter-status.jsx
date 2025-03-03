@@ -9,8 +9,10 @@ import {
 import { cn } from '@/lib/utils';
 import { Checkbox } from '@/components/ui/checkbox';
 import { InvoiceContext } from '@/context/invoice-context';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const FilterStatus = () => {
+  const isMobile = useIsMobile();
   const { statuses, selectedStatuses, setSelectedStatuses } =
     useContext(InvoiceContext);
 
@@ -34,9 +36,9 @@ const FilterStatus = () => {
     >
       <SelectTrigger
         defaultValue="net-1"
-        className="w-14 md:w-[118px] border-none bg-transparent p-0 normal-case"
+        className="w-14 sm:w-[118px] min-w-fit border-none bg-transparent p-0 normal-case"
       >
-        Filter by status
+        {isMobile ? 'Filter' : 'Filter by status'}
       </SelectTrigger>
       <SelectContent
         align="center"

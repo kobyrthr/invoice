@@ -23,7 +23,7 @@ const PageHeader = () => {
         </Typography>
       </div>
 
-      <div className="flex gap-4 lg:gap-20">
+      <div className="flex gap-4 lg:gap-10">
         <FilterStatus />
         <InvoiceCreate>
           <Button
