@@ -5,7 +5,7 @@ import { Circle } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 
 const badgeVariants = cva(
-  'max-[368px]:text-[13px] max-[368px]:w-[80px] w-[104px] inline-flex justify-center items-center max-[368px]:gap-1 gap-2 rounded-lg text-regular font-bold capitalize max-[368px]:py-2 py-3',
+  'max-[376px]:text-[13px] max-[376px]:w-[80px] w-[104px] inline-flex justify-center items-center max-[376px]:gap-1 gap-2 rounded-lg text-regular font-bold capitalize max-[376px]:py-2 py-3',
   {
     variants: {
       variant: {

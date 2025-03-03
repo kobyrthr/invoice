@@ -28,7 +28,7 @@ const InvoicePage = () => {
   }, [invoice]);
 
   return (
-    <div className=" grid bg-background items-center justify-items-center size-full max-[368px]:p-6 p-12 !  pb-32 gap-16 lg:p-20">
+    <div className=" grid bg-background items-center justify-items-center size-full max-[376px]:p-6 p-12 !pb-24 gap-16 lg:p-20">
       <div className="size-full flex flex-col gap-4 sm:gap-16 max-w-screen-md">
         <Link href="/" className="flex items-center">
           <Image
