@@ -81,8 +81,8 @@ const InvoiceEdit = ({ invoice, children }) => {
   };
 
   const handleCancel = () => {
-    form.reset();
-    sheetTriggerRef.current.click();
+    // form.reset();
+    // sheetTriggerRef.current.click();
   };
 
   return (
