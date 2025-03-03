@@ -107,7 +107,7 @@ const InvoiceCreate = ({ invoice, children }) => {
           <SheetHeader>
             <SheetTitle>
               <Typography type="heading-m" className="text-start">
-                New Invoie
+                New Invoice
               </Typography>
             </SheetTitle>
           </SheetHeader>
