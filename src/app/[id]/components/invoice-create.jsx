@@ -101,14 +101,13 @@ const InvoiceCreate = ({ invoice, children }) => {
       <SheetContent
         hideCloseButton={false}
         side="left"
-        className="w-full !max-w-[616px] p-14 pb-8 bg-popover"
+        className="w-full !max-w-[616px] p-7 sm:p-14 pb-4 sm:pb-8 bg-popover"
       >
         <ScrollArea className="h-full max-w-[616px] pr-2">
           <SheetHeader>
             <SheetTitle>
               <Typography type="heading-m" className="text-start">
-                Edit <span className="text-color-06">#</span>
-                {invoice?.id}
+                New Invoie
               </Typography>
             </SheetTitle>
           </SheetHeader>
@@ -129,7 +128,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                     render={({ field, fieldState: { error } }) => (
                       <FormItem>
                         <FormLabel
-                          className={cn('flex justify-between pr-6', {
+                          className={cn('flex justify-between pr-1 sm:pr-6', {
                             'border-color-09': error,
                           })}
                         >
@@ -158,9 +157,9 @@ const InvoiceCreate = ({ invoice, children }) => {
                       control={form.control}
                       name="senderAddress.city"
                       render={({ field, fieldState: { error } }) => (
-                        <FormItem>
+                        <FormItem className="col-span-2 min-[458px]:col-span-1">
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -188,9 +187,9 @@ const InvoiceCreate = ({ invoice, children }) => {
                       control={form.control}
                       name="senderAddress.postCode"
                       render={({ field, fieldState: { error } }) => (
-                        <FormItem>
+                        <FormItem className="col-span-2 min-[458px]:col-span-1">
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -220,7 +219,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                       render={({ field, fieldState: { error } }) => (
                         <FormItem className="col-span-2 min-[458px]:col-span-1">
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -259,7 +258,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                       render={({ field, fieldState: { error } }) => (
                         <FormItem>
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -290,7 +289,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                       render={({ field, fieldState: { error } }) => (
                         <FormItem>
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -320,7 +319,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                       render={({ field, fieldState: { error } }) => (
                         <FormItem>
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -350,9 +349,9 @@ const InvoiceCreate = ({ invoice, children }) => {
                       control={form.control}
                       name="clientAddress.city"
                       render={({ field, fieldState: { error } }) => (
-                        <FormItem>
+                        <FormItem className="col-span-2 min-[458px]:col-span-1">
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -380,9 +379,9 @@ const InvoiceCreate = ({ invoice, children }) => {
                       control={form.control}
                       name="clientAddress.postCode"
                       render={({ field, fieldState: { error } }) => (
-                        <FormItem>
+                        <FormItem className="col-span-2 min-[458px]:col-span-1">
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -395,7 +394,6 @@ const InvoiceCreate = ({ invoice, children }) => {
                             </span>
                             <FormMessage />
                           </FormLabel>
-
                           <FormControl>
                             <Input
                               className={cn(error && 'border-color-09')}
@@ -412,7 +410,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                       render={({ field, fieldState: { error } }) => (
                         <FormItem className="col-span-2 min-[458px]:col-span-1">
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -439,16 +437,19 @@ const InvoiceCreate = ({ invoice, children }) => {
                   </div>
                   {/* Invoice */}
                   <div className="space-y-6 mt-10">
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
                         name="paymentDue"
                         render={({ field, fieldState: { error } }) => (
                           <FormItem>
                             <FormLabel
-                              className={cn('flex justify-between pr-6', {
-                                'border-color-09': error,
-                              })}
+                              className={cn(
+                                'flex justify-between pr-1 sm:pr-6',
+                                {
+                                  'border-color-09': error,
+                                }
+                              )}
                             >
                               <span
                                 className={cn('inline-block text-inherit', {
@@ -477,9 +478,12 @@ const InvoiceCreate = ({ invoice, children }) => {
                         render={({ field, fieldState: { error } }) => (
                           <FormItem>
                             <FormLabel
-                              className={cn('flex justify-between pr-6', {
-                                'border-color-09': error,
-                              })}
+                              className={cn(
+                                'flex justify-between pr-1 sm:pr-6',
+                                {
+                                  'border-color-09': error,
+                                }
+                              )}
                             >
                               <span
                                 className={cn('inline-block text-inherit', {
@@ -523,7 +527,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                       render={({ field, fieldState: { error } }) => (
                         <FormItem>
                           <FormLabel
-                            className={cn('flex justify-between pr-6', {
+                            className={cn('flex justify-between pr-1 sm:pr-6', {
                               'border-color-09': error,
                             })}
                           >
@@ -556,11 +560,11 @@ const InvoiceCreate = ({ invoice, children }) => {
                   />
                   <div className="h-16"></div>
 
-                  <div className="h-[110px]  absolute inset-0 px-14 pr-16 -left-14 -right-14 -bottom-8 top-auto flex justify-end items-center gap-2 bg-popover">
+                  <div className="h-[110px] absolute inset-0 px-12 sm:px-14 pr-14 sm:pr-16 -left-14 -right-14 -bottom-8 top-auto flex justify-end items-center gap-2 bg-popover">
                     <Button
                       onClick={handleCancel}
                       variant="default"
-                      className="h-auto py-4 px-6 mr-auto"
+                      className="h-auto p-4 sm:px-6 mr-auto"
                     >
                       <Typography
                         type="heading-s-variant"
@@ -572,7 +576,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                     <Button
                       type
                       variant="secondary"
-                      className="w-fit h-auto  py-4 px-6"
+                      className="w-fit h-auto p-4 sm:px-6"
                       onClick={handleDraft}
                     >
                       <Typography
@@ -585,7 +589,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                     <Button
                       type="submit"
                       variant="primary"
-                      className="w-fit h-auto py-4 px-6"
+                      className="w-fit h-auto p-4 sm:px-6"
                     >
                       <Typography
                         type="heading-s-variant"
