@@ -12,27 +12,39 @@ import {
 
 const InvoiceCalculator = ({ invoice }) => {
   return (
-    <div className="flex flex-col bg-color-07-base mt-12">
+    <div className="flex flex-col bg-color-07-base dark:bg-color-04 mt-12">
       <Table containerClassName="hidden sm:block">
         <TableHeader className="border-b-0">
-          <TableRow className=" !border-b-0">
+          <TableRow className="!border-b-0">
             <TableHead className="text-start ">
-              <Typography type="body-variant" className="text-color-06">
+              <Typography
+                type="body-variant"
+                className="text-color-06 dark:text-color-05"
+              >
                 Item Name
               </Typography>
             </TableHead>
             <TableHead className="text-center">
-              <Typography type="body-variant" className="text-color-06">
+              <Typography
+                type="body-variant"
+                className="text-color-06 dark:text-color-05"
+              >
                 QTY.
               </Typography>
             </TableHead>
             <TableHead className="text-center">
-              <Typography type="body-variant" className="text-color-06">
+              <Typography
+                type="body-variant"
+                className="text-color-06 dark:text-color-05"
+              >
                 Price
               </Typography>
             </TableHead>
             <TableHead className="text-end">
-              <Typography type="body-variant" className="text-color-06">
+              <Typography
+                type="body-variant"
+                className="text-color-06 dark:text-color-05"
+              >
                 Total
               </Typography>
             </TableHead>
@@ -50,7 +62,7 @@ const InvoiceCalculator = ({ invoice }) => {
                   <TableCell>
                     <Typography
                       type="heading-s"
-                      className="text-color-07 text-center"
+                      className="text-color-07 dark:text-foreground text-center"
                     >
                       {item?.quantity}
                     </Typography>
@@ -58,7 +70,7 @@ const InvoiceCalculator = ({ invoice }) => {
                   <TableCell>
                     <Typography
                       type="heading-s"
-                      className="text-color-07 text-center"
+                      className="text-color-07 dark:text-foreground text-center"
                     >
                       £ {parseInt(item?.price).toFixed(2)}
                     </Typography>
@@ -143,7 +155,7 @@ const InvoiceCalculator = ({ invoice }) => {
         ))}
       </div>
 
-      <div className="flex flex-row justify-between p-6 bg-sidebar rounded-b-[8px]">
+      <div className="flex flex-row justify-between p-6 bg-sidebar dark:bg-color-08 rounded-b-[8px]">
         <LoaderSkeleton
           className="w-32 inline-block"
           isLoading={invoice === null}
@@ -151,7 +163,7 @@ const InvoiceCalculator = ({ invoice }) => {
           <Typography
             asChild
             type="body-variant"
-            className="text-popover block"
+            className="text-popover dark:text-foreground block"
           >
             <span>
               <span className="block sm:hidden">Grand Total</span>
@@ -164,7 +176,10 @@ const InvoiceCalculator = ({ invoice }) => {
           className="w-32 inline-block"
           isLoading={invoice === null}
         >
-          <Typography type="heading-m" className="text-popover block">
+          <Typography
+            type="heading-m"
+            className="text-popover dark:text-foreground block"
+          >
             £ {parseInt(invoice?.total).toFixed(2)}
           </Typography>
         </LoaderSkeleton>

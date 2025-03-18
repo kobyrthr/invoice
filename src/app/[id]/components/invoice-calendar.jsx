@@ -25,7 +25,7 @@ const InvoiceCalendar = ({ field, className }) => {
         <Button
           variant={'outline'}
           className={cn(
-            'w-full py-4 text-left justify-between bg-popover hover:border-color-01',
+            'w-full py-4 text-left justify-between bg-popover dark:border-color-04 hover:border-color-01',
             !field.value && 'text-muted-foreground',
             className
           )}

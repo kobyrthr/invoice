@@ -560,15 +560,15 @@ const InvoiceCreate = ({ invoice, children }) => {
                   />
                   <div className="h-16"></div>
 
-                  <div className="h-[110px] absolute inset-0 px-12 sm:px-14 pr-14 sm:pr-16 -left-14 -right-14 -bottom-8 top-auto flex justify-end items-center gap-2 bg-popover">
+                  <div className="h-[110px] absolute inset-0 px-12 sm:px-14 pr-14 sm:pr-16 -left-14 -right-14 -bottom-8 top-auto flex justify-end items-center gap-2 bg-popover dark:bg-color-12">
                     <Button
                       onClick={handleCancel}
                       variant="default"
-                      className="h-auto p-4 sm:px-6 mr-auto"
+                      className="h-auto p-4 sm:px-6 mr-auto dark:bg-color-07-base"
                     >
                       <Typography
                         type="heading-s-variant"
-                        className="text-color-06"
+                        className="text-color-06 dark:text-color-07"
                       >
                         Discard
                       </Typography>
@@ -581,7 +581,7 @@ const InvoiceCreate = ({ invoice, children }) => {
                     >
                       <Typography
                         type="heading-s-variant"
-                        className="text-inherit"
+                        className="text-inherit dark:text-color-05"
                       >
                         Save as Draft
                       </Typography>

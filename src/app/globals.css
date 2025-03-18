@@ -48,12 +48,27 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --background: 231 30% 11%;
+    --foreground: 0 0% 100%;
+    --card: 233 31% 17%;
+    --card-foreground: 231 73% 93%;
+    --popover: 233 30% 21%;
+    --popover-foreground: 0 0% 100%;
+    --01: 252 94% 67%;
+    --02: 252 100% 73%;
+    --03: 233 31% 17%;
+    --04: 233 30% 21%;
+    --05: 231 73% 93%;
+    --06: 231 20% 61%;
+    --06-base: 231 20% 27%;
+    --06-hover: 231 28% 7%;
+    --07: 231 37% 63%;
+    --07-base: 231 67% 99%;
+    --08: 228 29% 7%;
+    --09: 0 80% 63%;
+    --10: 0 100% 80%;
+    --11: 240 27% 98%;
+    --12: 233 30% 11%;
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
     --secondary: 240 3.7% 15.9%;
@@ -67,12 +82,13 @@ body {
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+    --shadow-card: 231 38% 45%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 231 20% 27%;
+    --sidebar-background: 233 31% 17%;
     --sidebar-foreground: 231 20% 36%;
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;

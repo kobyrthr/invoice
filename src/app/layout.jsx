@@ -4,6 +4,7 @@ import { AppNavbar } from '@/components/ui/app-navbar';
 import { League_Spartan } from 'next/font/google';
 import './globals.css';
 import ClientLayout from './client-layout';
+import { ThemeProvider } from 'next-themes';
 
 const leagueSpartan = League_Spartan({
   variable: '--font-spartan',
@@ -20,16 +21,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${leagueSpartan.className} antialiased`}>
         <ClientLayout>
-          <SidebarProvider className=" flex-col md:flex-row font-spartan">
-            <AppSidebar className="hidden md:block" />
-            <AppNavbar className="block md:hidden" />
-            <main className="block w-full bg-color-01 relative">
-              {children}
-            </main>
-          </SidebarProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SidebarProvider className=" flex-col md:flex-row font-spartan">
+              <AppSidebar className="hidden md:block" />
+              <AppNavbar className="block md:hidden" />
+              <main className="block w-full bg-color-01 relative">
+                {children}
+              </main>
+            </SidebarProvider>
+          </ThemeProvider>
         </ClientLayout>
       </body>
     </html>

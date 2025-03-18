@@ -42,22 +42,34 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
           <TableHeader className=" !border-b-0">
             <TableRow className=" !border-b-0">
               <TableHead className="pl-0">
-                <Typography type="body" className="text-color-06">
+                <Typography
+                  type="body"
+                  className="text-color-06 dark:text-color-05"
+                >
                   Item Name
                 </Typography>
               </TableHead>
               <TableHead>
-                <Typography type="body" className="text-color-06">
+                <Typography
+                  type="body"
+                  className="text-color-06 dark:text-color-05"
+                >
                   Qty.
                 </Typography>
               </TableHead>
               <TableHead>
-                <Typography type="body" className="text-color-06">
+                <Typography
+                  type="body"
+                  className="text-color-06 dark:text-color-05"
+                >
                   Price
                 </Typography>
               </TableHead>
               <TableHead>
-                <Typography type="body" className="text-color-06">
+                <Typography
+                  type="body"
+                  className="text-color-06 dark:text-color-05"
+                >
                   Total
                 </Typography>
               </TableHead>
@@ -100,7 +112,7 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
                   <TableCell className="w-20 ">
                     <Typography
                       type="heading-s"
-                      className="text-color-06 max-w-16 truncate"
+                      className="text-color-06 dark:text-foreground max-w-16 truncate"
                     >
                       {calculatedItems[index]?.total.toFixed(2)}
                     </Typography>
@@ -111,7 +123,7 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
                         remove(index);
                       }}
                       variant="default"
-                      className="px-0 py-0"
+                      className="px-0 py-0 dark:bg-transparent"
                     >
                       <Image src={DeleteIcon} alt="Delete" />
                     </Button>
@@ -131,7 +143,10 @@ export const InvoiceItemsEdit = ({ watch, register, control }) => {
                   variant="default"
                   className="w-full h-12 mt-4"
                 >
-                  <Typography type="heading-s" className="text-color-06">
+                  <Typography
+                    type="heading-s"
+                    className="text-color-06 dark:text-color-05"
+                  >
                     + Add New Item
                   </Typography>
                 </Button>
