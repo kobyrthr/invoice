@@ -13,13 +13,17 @@ const InvoiceBody = ({ invoice }) => {
             <LoaderSkeleton className="w-20" isLoading={invoice === null}>
               <Typography asChild type="heading-s" className="">
                 <span>
-                  <span className="text-color-06">#</span>
+                  <span className="text-color-06 dark:text-color-05">#</span>
                   {invoice?.id}
                 </span>
               </Typography>
             </LoaderSkeleton>
             <LoaderSkeleton className="w-24" isLoading={invoice === null}>
-              <Typography asChild type="body-variant" className="text-color-06">
+              <Typography
+                asChild
+                type="body-variant"
+                className="text-color-06 dark:text-color-05"
+              >
                 <span>{invoice?.description}</span>
               </Typography>
             </LoaderSkeleton>
@@ -27,22 +31,34 @@ const InvoiceBody = ({ invoice }) => {
 
           <div className="flex flex-col gap-1 sm:items-end min-w-20">
             <LoaderSkeleton className="h-3 w-28" isLoading={invoice === null}>
-              <Typography type="body-variant" className="text-color-06">
+              <Typography
+                type="body-variant"
+                className="text-color-06 dark:text-color-05"
+              >
                 {invoice?.senderAddress?.street}
               </Typography>
             </LoaderSkeleton>
             <LoaderSkeleton className="h-3 w-20" isLoading={invoice === null}>
-              <Typography type="body-variant" className="text-color-06">
+              <Typography
+                type="body-variant"
+                className="text-color-06 dark:text-color-05"
+              >
                 {invoice?.senderAddress?.city}
               </Typography>
             </LoaderSkeleton>
             <LoaderSkeleton className="h-3 w-16" isLoading={invoice === null}>
-              <Typography type="body-variant" className="text-color-06">
+              <Typography
+                type="body-variant"
+                className="text-color-06 dark:text-color-05"
+              >
                 {invoice?.senderAddress?.postCode}
               </Typography>
             </LoaderSkeleton>
             <LoaderSkeleton className="h-3 w-24" isLoading={invoice === null}>
-              <Typography type="body-variant" className="text-color-06">
+              <Typography
+                type="body-variant"
+                className="text-color-06 dark:text-color-05"
+              >
                 {invoice?.senderAddress?.country}
               </Typography>
             </LoaderSkeleton>
@@ -54,7 +70,7 @@ const InvoiceBody = ({ invoice }) => {
             <LoaderSkeleton className="w-20" isLoading={invoice === null}>
               <Typography
                 type="body-variant"
-                className="text-color-06 leading-[20px]"
+                className="text-color-06 dark:text-color-05 leading-[20px]"
               >
                 Invoice Date
               </Typography>
@@ -68,7 +84,7 @@ const InvoiceBody = ({ invoice }) => {
             <LoaderSkeleton className="w-20 mt-6" isLoading={invoice === null}>
               <Typography
                 type="body-variant"
-                className="text-color-06 leading-[20px] mt-6"
+                className="text-color-06 dark:text-color-05 leading-[20px] mt-6"
               >
                 Payment Date
               </Typography>
@@ -84,7 +100,7 @@ const InvoiceBody = ({ invoice }) => {
             <LoaderSkeleton className="w-20" isLoading={invoice === null}>
               <Typography
                 type="body-variant"
-                className="text-color-06 leading-[20px]"
+                className="text-color-06 dark:text-color-05 leading-[20px]"
               >
                 Bill To
               </Typography>
@@ -98,7 +114,7 @@ const InvoiceBody = ({ invoice }) => {
             <LoaderSkeleton className="w-24 mt-2" isLoading={invoice === null}>
               <Typography
                 type="body-variant"
-                className="leading-[20px] text-color-06 mt-2"
+                className="leading-[20px] text-color-06 dark:text-color-05 mt-2"
               >
                 {invoice?.clientAddress?.street}
               </Typography>
@@ -106,7 +122,7 @@ const InvoiceBody = ({ invoice }) => {
             <LoaderSkeleton className="w-24 mt-1" isLoading={invoice === null}>
               <Typography
                 type="body-variant"
-                className="leading-[20px] text-color-06"
+                className="leading-[20px] text-color-06 dark:text-color-05"
               >
                 {invoice?.clientAddress?.city}
               </Typography>
@@ -114,7 +130,7 @@ const InvoiceBody = ({ invoice }) => {
             <LoaderSkeleton className="w-24 mt-1" isLoading={invoice === null}>
               <Typography
                 type="body-variant"
-                className="leading-[20px] text-color-06"
+                className="leading-[20px] text-color-06 dark:text-color-05"
               >
                 {invoice?.clientAddress?.postCode}
               </Typography>
@@ -122,7 +138,7 @@ const InvoiceBody = ({ invoice }) => {
             <LoaderSkeleton className="w-24 mt-1" isLoading={invoice === null}>
               <Typography
                 type="body-variant"
-                className="leading-[20px] text-color-06"
+                className="leading-[20px] text-color-06 dark:text-color-05"
               >
                 {invoice?.clientAddress?.country}
               </Typography>
@@ -133,7 +149,7 @@ const InvoiceBody = ({ invoice }) => {
             <LoaderSkeleton className="w-20" isLoading={invoice === null}>
               <Typography
                 type="body-variant"
-                className="text-color-06 leading-[20px]"
+                className="text-color-06 dark:text-color-05 leading-[20px]"
               >
                 Sent To
               </Typography>

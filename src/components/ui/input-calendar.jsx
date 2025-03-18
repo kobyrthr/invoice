@@ -50,9 +50,8 @@ const InputCalendar = () => {
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
-                      variant={'outline'}
                       className={cn(
-                        'w-[240px] py-4 text-left justify-between hover:border-color-01',
+                        'w-[240px] py-4 text-left justify-between border-color-05 hover:border-color-01',
                         !field.value && 'text-muted-foreground'
                       )}
                     >

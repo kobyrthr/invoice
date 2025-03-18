@@ -548,7 +548,7 @@ const InvoiceEdit = ({ invoice, children }) => {
                   />
                   <div className="h-16"></div>
 
-                  <div className="h-[110px]  absolute inset-0 px-14 pr-16 -left-14 -right-14 -bottom-8 top-auto flex justify-end items-center gap-2 bg-popover">
+                  <div className="h-[110px] absolute inset-0 px-14 pr-16 -left-14 -right-14 -bottom-8 top-auto flex justify-end items-center gap-2 bg-popover dark:bg-color-12">
                     <Button
                       onClick={handleCancel}
                       variant="default"

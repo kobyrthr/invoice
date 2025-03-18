@@ -17,7 +17,7 @@ const InvoiceDelete = ({ invoiceId, onDelete, children }) => {
       <DialogTrigger asChild ref={dialogTrigger}>
         {children}
       </DialogTrigger>
-      <DialogContent className="max-w-[480px] p-12">
+      <DialogContent className="max-w-[480px] p-12 dark:bg-color-03">
         <DialogTitle>
           <Typography type="heading-m" className="leading-[-0.5px]">
             Confirm Deletion
@@ -25,7 +25,11 @@ const InvoiceDelete = ({ invoiceId, onDelete, children }) => {
         </DialogTitle>
 
         <DialogDescription>
-          <Typography asChild type="body" className="text-color-06">
+          <Typography
+            asChild
+            type="body"
+            className="text-color-06 dark:text-color-05"
+          >
             <span className="">
               Are you sure you want to delete invoice #{invoiceId}? This action
               cannot be undone.
@@ -36,6 +40,7 @@ const InvoiceDelete = ({ invoiceId, onDelete, children }) => {
         <div className="flex justify-end gap-2 mt-3">
           <Button
             variant="default"
+            className="dark:bg-color-04"
             onClick={() => {
               dialogTrigger.current.click();
             }}
