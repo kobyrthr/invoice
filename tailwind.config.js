@@ -10,6 +10,7 @@ const config = {
   theme: {
     extend: {
       colors: {
+        shadow: 'hsl(var(--shadow))',
         success: 'hsl(var(--success))',
         warning: 'hsl(var(--warning))',
         popover: {

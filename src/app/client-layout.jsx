@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { InvoiceContext } from '@/context/invoice-context';
 import DATA from '@/../public/data.json';
+import { ThemeProvider } from '@/components/ui/theme-provider';
 
 export default function ClientLayout({ children }) {
   const statuses = ['pending', 'paid', 'draft'];
@@ -59,22 +60,29 @@ export default function ClientLayout({ children }) {
   };
 
   return (
-    <InvoiceContext.Provider
-      value={{
-        invoices,
-        invoice,
-        setInvoice,
-        setInvoices,
-        statuses,
-        selectedStatuses,
-        setSelectedStatuses,
-        addInvoice,
-        updateInvoice,
-        deleteInvoice,
-        markAsPaid,
-      }}
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
     >
-      {children}
-    </InvoiceContext.Provider>
+      <InvoiceContext.Provider
+        value={{
+          invoices,
+          invoice,
+          setInvoice,
+          setInvoices,
+          statuses,
+          selectedStatuses,
+          setSelectedStatuses,
+          addInvoice,
+          updateInvoice,
+          deleteInvoice,
+          markAsPaid,
+        }}
+      >
+        {children}
+      </InvoiceContext.Provider>
+    </ThemeProvider>
   );
 }
